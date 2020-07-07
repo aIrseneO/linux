@@ -23,7 +23,10 @@ set cindent
 set relativenumber
 
 " Sets a ruler at line 80
-set colorcolumn=80
+set colorcolumn=81
+
+" Set tab to 4 spaces
+set tabstop=4
 
 " Lets you change the ruler color
 " Change the value of ctermbg to any other color code you want
@@ -41,6 +44,9 @@ syntax on
 
 " highlight matching braces
 set showmatch
+
+" move cursor with one mouse click
+set mouse=a
 
 " intelligent comments
 set comments=sl:/*,mb:\ *,elx:\ */
