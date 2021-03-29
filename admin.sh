@@ -87,6 +87,20 @@ man lsattr; man chattr
 sudo mkfs -t ext4 /dev/sda10; sudo mkfs.ext4 /dev/sda10 # are the same
 sudo touch /forcefsck; sudo reboot # do a fsck on the root filesystem
 man mount; man umount; man fuser; man lsof 
-/etfepppppd	apc/fstab
-efe
+/etc/fstab
+cat /proc/swaps
+man mkswap; man swapon; man swapoff
+man quotacheck; man quotaon; man quotaoff; man quota; man edquota
+echo "/dev/sdaX /home ext4 defaults,usrquota 1 2" >> /etc/fstab
+sudo mount -o remount /home
 
+sudo quotacheck -vu /home
+sudo quotaon -vu /home
+sudo edquota someusername
+sudo quotacheck -ua
+sudo quotacheck -ga
+sudo quotacheck -u [somefilesystem]
+sudo quotacheck -g [somefilesystem]
+sudo edquota -u -p [userproto] [username]
+df -hT
+du -ah <filename>
