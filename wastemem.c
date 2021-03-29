@@ -11,9 +11,9 @@
 //./wastemem 5000
 
 /*
-   Given a number a number of Megabyte, X (argument passed to the program),
+   Given a number a number of Megabytes X (argument passed to the program),
    this program gradually allocotes up to X Megabytes and set them to zero.
-   Allocation is done in TIME secondes.
+   Allocations are done in TIME secondes.
 */
 int main(int argc, char **argv) {
 	int		i, j;
