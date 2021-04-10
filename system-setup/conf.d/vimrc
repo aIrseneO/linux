@@ -16,11 +16,9 @@ set autoindent
 set smartindent
 set cindent
 
-" Shows line numbers
-"set number
-
-" Show relative numbers
-set relativenumber
+" Show [relative] numbers
+"set relativenumber
+set number
 
 " Sets a ruler at line 80
 set colorcolumn=81

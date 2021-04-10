@@ -7,7 +7,7 @@
 # define TIME 10
 #endif
 
-//gcc -D TIME=10 -Wall -Wextra -Werror -o wastemen wastemem.c
+//gcc -D TIME=10 -Wall -Wextra -Werror -o wastemem wastemem.c
 //./wastemem 5000
 
 /*
@@ -21,12 +21,16 @@ int main(int argc, char **argv) {
 	char	*allocatedAddr[TIME];
 
 	if (argc != 2) {
-		printf("Usage: %s SIZE_TO_ALLOCATE\n", argv[0]);
+		printf("Usage: wastmemory memory_size(MB)\n");
 		return (1);
+	}
+	if (!strcmp(argv[1], "--help")) {
+		printf("Usage: wastememory memory_size(MB)\n	--help  display this help and exit\nGiven a number of Megabytes X (argument passed to the program), this program gradually allocotes up to X Megabytes and set them to zero. Allocations are done in TIME secondes.");
+		return (0);
 	}
 	allocatePerSec = atoi(argv[1]) / TIME;
 	for (i = 0; i < TIME; i++) {
-		if ((allocatedAddr[i] = (char *)malloc(allocatePerSec * 1000000)) == NULL) {
+		if (!(allocatedAddr[i] = (char *)malloc(allocatePerSec * 1000000))) {
 			printf("Failed after %i allocations of %luM, total: %luM"
 					, i, allocatePerSec, i * allocatePerSec);
 			break;

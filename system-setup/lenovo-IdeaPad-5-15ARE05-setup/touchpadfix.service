@@ -1,0 +1,10 @@
+[Unit]
+Description=Fix touchpad issue by binding correct driver
+
+[Service]
+ExecStart=/usr/local/bin/touchpadfix
+Type=oneshot
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
