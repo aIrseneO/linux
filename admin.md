@@ -1,3 +1,4 @@
+List of available LINUX distributions can be find [here](https://lwn.net/Distributions/).
 # FHS Linux Standard Directory Tree
 The Filesystem Hierarchy Standard ([FHS](https://refspecs.linuxfoundation.org/FHS_3.0/fhs-3.0.pdf)) is administered originally by the Free Standards Group.<br>
 | DIRECTORY | IN FHS | PURPOSE |

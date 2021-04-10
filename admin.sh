@@ -1,4 +1,4 @@
-#! /bin/sh
+2! /bin/sh
 sudo du --max-depth=1 -hx /
 help ulimit
 ps -elf
@@ -104,3 +104,34 @@ sudo quotacheck -g [somefilesystem]
 sudo edquota -u -p [userproto] [username]
 df -hT
 du -ah <filename>
+man tune2fs
+sudo dumpe2fs /dev/sda1| less
+df -h /dev/sda1
+sudo e4defrag -c <file>
+man lvm
+
+sudo fdisk </dev/sdaX>
+man mdadm
+man botparam
+man sysctl; sysctl -a; man 2 sysctl; man sysctl.conf
+man systemd
+man modinfo; man lsmod; man rmmod; man insmod; man modprobe; man depmod; man mknod
+man udev
+
+cat /proc/cpuinfo
+
+man qemu-img
+man useradd; /etc/passwd; /etc/shadow ; /etc/login.defs ; /etc/nologin.txt
+man userdel; man deluser; man delgroup
+man usermod
+man passwd; man chage ; bash -r; man bash -> /restricted shell
+whoami; 
+ssh-copy-id user@domain ; ssh user@domain; ssh-keygen; man ssh_config
+/etc/group; /etc/gshadow; man groupadd; man groupmod; man groupdel; man usermod
+man group; man id
+man chown; man chgrp; umask; man getfacl; man setfacl
+man pam.d
+hostname --help; hostnamectl --help
+man ip; ip link show wlo1
+man ifconfig
+lspci
