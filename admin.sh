@@ -135,3 +135,56 @@ hostname --help; hostnamectl --help
 man ip; ip link show wlo1
 man ifconfig
 lspci
+man nmtui; nmtui
+man nmcli-examples; man nmcli; nmcli --help
+man dig; man host; man nslookup
+[dig | host | nslookup] google.com
+man ping; man traceroute; man mtr
+firewall-cmd --help
+sudo firewall-cmd --permanent --zone=trusted --add-source=192.168.1.0/24
+man shutdown; man reboot; man halt; man poweroff; shutdown --help
+man grub-install; grub-install --help
+man telinit
+systemctl --help
+systemctl list-units -t service --all
+man runlevel; runlevel
+man telinit; telinit 3
+ls -la /etc/rc*.d/; man chkconfig
+ls -la /etc/rc*.d/; man chkconfig
+service x-serviec status
+service --status-all
+man tar; tar [-cvf/-cMf/-dvf/-tf/-xvf/-xpvf] file.tar [file]
+tar --create --newer '2021-12-12' -vf backup.tar file
+tar --create --after-date '2021-12-12' -vzf backup.tar file
+tar zcvf source.tar.gz source
+tar jcvf source.tar.bz2 source
+tar Jcvf source.tar.xz source
+tar xzvf source.tar.gz
+tar xjvf source.tar.bz2
+tar xJvf source.tar.xz
+dd if=input-file of=output-file options
+dd --help;
+dd if=/dev/zero of=outfile bs=1M count=10; dd if=/dev/sda of=/dev/sdb
+dd if=/dev/sda of=sdadisk.img; dd if=/dev/sda1 of=partition1.img
+dd if=/dev/cdrom of=tgsservice.iso bs=2048;
+dd if=ndata conv=swab count=1024 | uniq > ofile
+rsync --help; rsync [options] sourcefile destinationfile
+ls | cpio --create -O /dev/st0
+cpio -i somefile -I /dev/st0; cpio -t -I /dev/st0
+man dump; man restore; sudo restore -rvf /tmp/boot_backup
+man mt; mt --help
+getenforce; sudo setenforce Permissive
+touch 42; ls -Z; ps auZ; chcon -t ect_t 42; ls -Z; chcon --reference 42 so; ls -Z
+restorecon --help; man restorecon
+mkdir dir ; ls -Z| grep dir; sudo semanage fcontext -a -t etc_t dir; ls -Z | grep dir; restorecon -RFv dir; ls -Z| grep dir; rm -rf dir
+man setsebool ; man getsebool; semanage boolean -l
+tail -f /var/log/messages
+sestatus
+sudo setenforce 0; sudo vi /etc/selinux/config
+apparmor_status; man apparmor
+aa-enforce; aa-complain
+mount -o ro,noexec,nodev /dev/sda2 /mymountpt
+/etc/fstab: /dev/sda2 /mymountpt ext4 ro,noexec,nodev 0 0
+chmod u+s somefile; chmod g+s somefile
+man debsums; debsums --help
+man aide; aide --help

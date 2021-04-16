@@ -215,20 +215,20 @@ bash_prompt() {
 	## Choose your color combination here                                     ##
 	############################################################################
 	local FONT_COLOR_1=$WHITE
-	local BACKGROUND_1=$BLUE
+	local BACKGROUND_1=$GREEN
 	local TEXTEFFECT_1=$BOLD
-	
+
 	local FONT_COLOR_2=$WHITE
-	local BACKGROUND_2=$L_BLUE
+	local BACKGROUND_2=$RED
 	local TEXTEFFECT_2=$BOLD
-	
+
 	local FONT_COLOR_3=$D_GRAY
-	local BACKGROUND_3=$WHITE
+	local BACKGROUND_3=$YELLOW
 	local TEXTEFFECT_3=$BOLD
-	
+
 	local PROMT_FORMAT=$BLUE_BOLD
 
-	
+
 	############################################################################
 	## EXAMPLE CONFIGURATIONS                                                 ##
 	## I use them for different hosts. Test them out ;)                       ##
@@ -382,7 +382,11 @@ bash_prompt() {
 	## BASH PROMT                                                             ##
 	## Generate promt and remove format from the rest                         ##
 	############################################################################
-	PS1="$TITLEBAR\n${PROMT_USER}${SEPARATOR_1}${PROMT_HOST}${SEPARATOR_2}${PROMT_PWD}${SEPARATOR_3}${PROMT_INPUT}"
+	#PS1="$TITLEBAR\n${PROMT_USER}${SEPARATOR_1}${PROMT_HOST}${SEPARATOR_2}${PROMT_PWD}${SEPARATOR_3}${PROMT_INPUT}"
+	
+	local SEPARATOR_DEFAULT
+	format_font SEPARATOR_DEFAULT $(($DEFAULT+$BG))
+	PS1="${PROMT_USER}${PROMT_PWD}${SEPARATOR_DEFAULT}${PROMT_INPUT}"
 
 	
 
