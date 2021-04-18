@@ -47,6 +47,7 @@ else
 fi
 
 if [ -f $CONFIG_D/terminator.conf ]; then
+	mkdir -p ~/.config/terminator
 	cp $CONFIG_D/terminator.conf ~/.config/terminator/config
 else
 	echo "Missing file: $CONFIG_D/terminator.conf"

@@ -188,3 +188,4 @@ mount -o ro,noexec,nodev /dev/sda2 /mymountpt
 chmod u+s somefile; chmod g+s somefile
 man debsums; debsums --help
 man aide; aide --help
+man lshw #+++++++++++++
