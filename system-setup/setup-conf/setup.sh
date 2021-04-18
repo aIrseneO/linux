@@ -22,33 +22,7 @@ if [ ! -d $CONFIG_D ]; then
 	exit
 fi
 
-if [ -f $CONFIG_D/vimrc ]; then
-	cp $CONFIG_D/vimrc ~/.vimrc
-else
-	echo "Missing file: $CONFIG_D/vimrc"
-fi
-
-if [ -f $CONFIG_D/bashrc ]; then
-	cp $CONFIG_D/bashrc ~/.bashrc
-else
-	echo "Missing file: $CONFIG_D/bashrc"
-fi
-
-if [ -f $CONFIG_D/bash_aliases ];then
-	cp $CONFIG_D/bash_aliases ~/.bash_aliases
-else
-	echo "Missing file: $CONFIG_D/bash_aliases"
-fi
-
-if [ -f $CONFIG_D/bash_fancy ];then
-	cp $CONFIG_D/bash_fancy ~/.bash_fancy
-else
-	echo "Missing file: $CONFIG_D/bash_fancy"
-fi
-
-if [ -f $CONFIG_D/terminator.conf ]; then
-	mkdir -p ~/.config/terminator
-	cp $CONFIG_D/terminator.conf ~/.config/terminator/config
-else
-	echo "Missing file: $CONFIG_D/terminator.conf"
-fi
+./bash.sh $CONFIG_D
+./terminator.sh $CONFIG_D
+./vim.sh $CONFIG_D
+./xorg.sh $CONFIG_D

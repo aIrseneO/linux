@@ -1,10 +1,17 @@
+# This file content what I usually do when I install a new distro linux (Ubuntu
+# in this case)
+#
+#TODO
 # Kernel
+#	To change the kernel that the system will boot with:
+#sudo grub-mkconfig | grep -E 'submenu |menuentry ' (get the desired version)
+#sudo vi /etc/default/grub (edit with the desired version)
+#GRUB_DEFAULT="Advanced options for Ubuntu>Ubuntu, with Linux 4.15.0-101-generic"
+#	Source:
 #https://www.systutorials.com/how-to-make-grub2-boot-to-older-kernel-version-in-ubuntu-20-04/
-#	sudo grub-mkconfig | grep -E 'submenu |menuentry ' (get the desired version)
-#	sudo vi /etc/default/grub (edit with the desired version)
-#	GRUB_DEFAULT="Advanced options for Ubuntu>Ubuntu, with Linux 4.15.0-101-generic"
-#https://www.maketecheasier.com/downgrade-kernel-linux/
-#	sudo apt remove linux-image-VERSION-generic linux-headers-VERSION-generic
+#
+#	To remove a kernel:
+#sudo apt remove linux-image-VERSION-generic linux-headers-VERSION-generic
 #_______________________________________________________________________________
 # Grub
 #	To check the command used by the system at boot time:
