@@ -1,4 +1,4 @@
-2! /bin/sh
+#! /bin/sh
 sudo du --max-depth=1 -hx /
 help ulimit
 ps -elf
@@ -189,3 +189,59 @@ chmod u+s somefile; chmod g+s somefile
 man debsums; debsums --help
 man aide; aide --help
 man lshw #+++++++++++++
+for f in ./*; do mv "$f" $(echo "$f" | cut -d - -f 2); done
+man test
+lsusb; man lsusb
+man lp; lp -d printer <filename>; lpq -a; lpadmin --help; lpoption --help
+man lpstat; lpstat -s; lpstat -a; lprm job-id; lpmove job-id newprinter
+man enscript; enscript -p psfile.ps textfile.txt;
+enscript -n -p psfile.ps textfile.txt; enscript textfile.txt
+man ghostscript; man pdf2ps; man ps2pdf
+pdf2ps file.pdf	#Converts file.pdf to file.ps
+ps2pdf file.ps	#Converts file.ps to file.pdf
+pstopdf input.ps output.pdf	#Converts input.ps to output.pdf
+pdftops input.pdf output.ps	#Converts input.pdf to output.ps
+convert input.ps output.pdf	#Converts input.ps to output.pdf
+convert input.pdf output.ps	#Converts input.pdf to output.ps
+man evince; 
+man qpdf; qpdf --help
+#Merge the two documents 1.pdf and 2.pdf. The output will be saved to 12.pdf.
+qpdf --empty --pages 1.pdf 2.pdf -- 12.pdf	
+#Write only pages 1 and 2 of 1.pdf. The output will be saved to new.pdf.
+qpdf --empty --pages 1.pdf 1-2 -- new.pdf	
+#Rotate page 1 of 1.pdf 90 degrees clockwise and save to 1r.pdf
+qpdf --rotate=+90:1 1.pdf 1r.pdf
+#Rotate all pages of 1.pdf 90 degrees clockwise and save to 1r-all.pdf
+qpdf --rotate=+90:1-z 1.pdf 1r-all.pdf
+#Encrypt with 128 bits public.pdf using as the passwd mypw with output as private.pdf
+qpdf --encrypt mypw mypw 128 -- public.pdf private.pdf
+#Decrypt private.pdf with output as file-decrypted.pdf. 
+qpdf --decrypt --password=mypw private.pdf file-decrypted.pdf
+
+#Merge the two documents 1.pdf and 2.pdf. The output will be saved to 12.pdf
+pdftk 1.pdf 2.pdf cat output 12.pdf
+#Write only pages 1 and 2 of 1.pdf. The output will be saved to new.pdf.
+pdftk A=1.pdf cat A1-2 output new.pdf
+#Rotate all pages of 1.pdf 90 degrees clockwise and save result in new.pdf.
+pdftk A=1.pdf cat A1-endright output new.pd
+pdftk public.pdf output private.pdf user_pw PROMPT
+
+#Combine three PDF files (1.pdf, 2.pdf & 3.pdf) into one 4.pdf
+gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite  -sOutputFile=4.pdf 1.pdf 2.pdf 3.pdf
+#Split pages 10 to 20 out of a PDF file
+gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dDOPDFMARKS=false -dFirstPage=10 -dLastPage=20 -sOutputFile=split.pdf file.pdf
+
+man pdfinfo; 
+man flped; #add data to a PostScript document
+man pdfmod #simple application that provides gui for modifying PDF documents
+
+touch dmesg.ps
+enscript -p dmesg.ps /var/log/dmesg
+ps2pdf dmesg.ps
+evince dmesg.pdf
+
+cups # http://localhost:631
+man last
+/etc/sudoers #who where = (as_whom) what
+man visudo
+man sha512sum; echo -n test | sha512sum

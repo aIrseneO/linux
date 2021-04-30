@@ -30,3 +30,5 @@
 #git config --global user.name "USERNAME"
 #git config --global user.email "EMAIL"
 #git config --global credential.helper 'cache --timeout=60'
+
+#sudo systemctl enable bluetooth

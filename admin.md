@@ -23,7 +23,13 @@ The Filesystem Hierarchy Standard ([FHS](https://refspecs.linuxfoundation.org/FH
 |/tmp|Yes|Temporary files; on many distributions lost across a reboot and may be a ramdisk in memory.|
 |/usr|Yes|Multi-user applications, utilities and data; theoretically read-only.|
 |/var|Yes|Variable data that changes during system operation.|
-<br><br>
+
+<br>Different types of filesystems supported by Linux:
+* Conventional disk filesystems: ext2, ext3, ext4, XFS, Btrfs, JFS, NTFS, etc.
+* Flash storage filesystems: ubifs, JFFS2, YAFFS, etc.
+* Database filesystems
+* Special purpose filesystems: procfs, sysfs, tmpfs, squashfs, debugfs, etc.<br><br>
+
 # Programs, Processes, and Threads
 A **program** is a set of instructions, along with any internal data used while carrying the instructions out. Programs may also use external data.<br>
 A **process** is an executing program and associated resources, including environment, open files, signal handlers, etc.<br>
@@ -46,11 +52,11 @@ DNF is a software package manager that installs, updates, and removes packages o
 ## ZYPPER package manager
 For use on SUSE-based systems, the zypper program provides a higher level of intelligent services for using the underlying rpm program, and plays the same role as yum on Red Hat-based systems. It can automatically resolve dependencies when installing, updating and removing packages. It accesses external software repositories, synchronizing with them and retrieving and installing software as needed.
 ## The Debian Package Manager [dpkg](https://man7.org/linux/man-pages/man1/dpkg.1.html)<br>
-The standard naming format for a binary package is:<br>
+It's the lower-level package utilities for debian based distributions. The standard naming format for a binary package is:<br>
 **name_version-revisionNumber_architecture.deb**
  ## APT - Advanced Packaging Tool
   APT set of programs provides a higher level of intelligent services for using the underlying dpkg program, and plays the same role as yum on Red Hat-based systems. Usefull link [package](https://www.debian.org/distrib/packages) and [Ubuntu Packages Search](https://packages.ubuntu.com/).
-  ## Process and Load Monitoring Utilities
+# Process and Load Monitoring Utilities
   | UTILITY | PURPOSE | PACKAGE |
   |-------- | ------- | ------- |
 |top|Process activity, dynamically updated|procps|
