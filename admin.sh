@@ -245,3 +245,7 @@ man last
 /etc/sudoers #who where = (as_whom) what
 man visudo
 man sha512sum; echo -n test | sha512sum
+sleep 1000; ctrl+z; bg; fg
+sleep 1000; ctrl+z; jobs;jobs -l
+w; uptime
+ps axo command,pid,stat,priority|head; ps aux|head

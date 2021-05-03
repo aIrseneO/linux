@@ -69,6 +69,7 @@ It's the lower-level package utilities for debian based distributions. The stand
 |numastat|Information about NUMA (Non-Uniform Memory Architecture)|numactl|
 |strace|Information about all system calls a process makes|strace|
 <br>
+
 ## Memory Monitoring Utilities
   | UTILITY | PURPOSE | PACKAGE |
   |-------- | ------- | ------- |
@@ -76,6 +77,7 @@ It's the lower-level package utilities for debian based distributions. The stand
 |vmstat|Detailed virtual memory statistics and block I/O, dynamically updated|procps|
 |pmap|Process memory map|procps|
 <br>
+
 ## I/O Monitoring Utilities
   | UTILITY | PURPOSE | PACKAGE |
   |-------- | ------- | ------- |
@@ -83,6 +85,7 @@ It's the lower-level package utilities for debian based distributions. The stand
 |sar|Display and collect information about system activity|sysstat|
 |vmstat|Detailed virtual memory statistics and block I/O, dynamically updated|procps|
 <br>
+
 ## Network Monitoring Utilities
   | UTILITY | PURPOSE | PACKAGE |
   |-------- | ------- | ------- |
@@ -91,3 +94,14 @@ It's the lower-level package utilities for debian based distributions. The stand
 |tcpdump|Detailed analysis of network packets and traffic|tcpdump|
 |wireshark|Detailed network traffic analysis|wireshark|
 <br>
+
+## top
+  | Command | Output |
+  |---------|--------|
+  | t | Display or hide summary information (rows 2 and 3)|
+  | m	| Display or hide memory information (rows 4 and 5)|
+  | A	| Sort the process list by top resource consumers|
+  | r	| Renice (change the priority of) a specific processes|
+  | k	| Kill a specific process|
+  | f	| Enter the top configuration screen|
+  | o	| Interactively select a new sort order in the process list|<br>

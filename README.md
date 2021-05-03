@@ -1,2 +1,2 @@
-# unix
-All about unix
+# Linux
+All about Linux
