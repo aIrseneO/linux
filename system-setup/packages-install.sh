@@ -9,7 +9,7 @@
 #sudo apt install openssh-server -y
 #sudo apt install net-tools
 sudo snap install --classic code
-#sudo apt install virtualbox virtualbox-ext-pack
+#sudo apt install virtualbox virtualbox-ext-pack -y
 #sudo apt install traceroute
 #sudo apt install firewalld
 #sudo apt install gufw
