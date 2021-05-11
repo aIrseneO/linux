@@ -25,6 +25,7 @@ set colorcolumn=81
 
 " Set tab to 4 spaces
 set tabstop=4
+set shiftwidth=4
 
 " Lets you change the ruler color
 " Change the value of ctermbg to any other color code you want
