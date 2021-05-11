@@ -131,6 +131,7 @@ ssh-copy-id user@domain ; ssh user@domain; ssh-keygen; man ssh_config
 man group; man id
 man chown; man chgrp; umask; man getfacl; man setfacl
 man pam.d
+
 hostname --help; hostnamectl --help
 man ip; ip link show wlo1
 man ifconfig
@@ -139,7 +140,17 @@ man nmtui; nmtui
 man nmcli-examples; man nmcli; nmcli --help
 man dig; man host; man nslookup
 [dig | host | nslookup] google.com
-man ping; man traceroute; man mtr
+man ping; man traceroute
+man mtr; sudo mtr --report-cycles 3 <routeIp>
+man ethtool; ethtool enp0s25; man netstat; netsat -r
+man nmap; nmap localhost; man tcpdump; man iptraf
+
+man lynx; man elinks; man w3m
+man wget; wget <url>
+man curl; curl <url>; curl -o saved.html <url>
+man ftp; man sftp; ftp ip; mget filename; mput filename; lcd dirpath; bye
+man dhclient; dhclient enp0s25
+
 firewall-cmd --help
 sudo firewall-cmd --permanent --zone=trusted --add-source=192.168.1.0/24
 man shutdown; man reboot; man halt; man poweroff; shutdown --help
@@ -195,6 +206,7 @@ lsusb; man lsusb
 man lp; lp -d printer <filename>; lpq -a; lpadmin --help; lpoption --help
 man lpstat; lpstat -s; lpstat -a; lprm job-id; lpmove job-id newprinter
 man enscript; enscript -p psfile.ps textfile.txt;
+
 enscript -n -p psfile.ps textfile.txt; enscript textfile.txt
 man ghostscript; man pdf2ps; man ps2pdf
 pdf2ps file.pdf	#Converts file.pdf to file.ps
@@ -231,6 +243,8 @@ gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite  -sOutputFile=4.pdf 1.pdf 2.pdf 3.pdf
 #Split pages 10 to 20 out of a PDF file
 gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dDOPDFMARKS=false -dFirstPage=10 -dLastPage=20 -sOutputFile=split.pdf file.pdf
 
+pandoc filename.md -o filename.pdf; man pandoc
+
 man pdfinfo; 
 man flped; #add data to a PostScript document
 man pdfmod #simple application that provides gui for modifying PDF documents
@@ -249,3 +263,7 @@ sleep 1000; ctrl+z; bg; fg
 sleep 1000; ctrl+z; jobs;jobs -l
 w; uptime
 ps axo command,pid,stat,priority|head; ps aux|head
+man at; at --help
+at 00:42 AM 4/20/2022 -f ./myScript.sh
+
+
