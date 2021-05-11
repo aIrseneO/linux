@@ -1,28 +1,22 @@
 #! /bin/sh
 
-if [ "$#" -gt 1 ]; then
-	echo "Too many arguments.\n	Usage: setup.sh [dir]"
-	exit
-fi
+CONFIG_S=./conf.d
 
-if [ "$1" = "--help" ]; then
-	echo "Usage: setup.sh [dir]\n	--help  display this help and exit
-The default directory is [../conf.d/]"
-	exit
+if [ "$#" -gt 1 ] || [ "$1" = "--help" ]; then
+	echo "Usage: $0 [dir]\n --help  display this help and exit
+The default directory is [$CONFIG_S]"; exit 1
 fi
 
 if [ "$#" = 1 ]; then
-	CONFIG_D=$1
-else
-	CONFIG_D=../conf.d
+	CONFIG_S=$1
 fi
 
-if [ ! -d $CONFIG_D ]; then
-	echo "Missing directory: $CONFIG_D\n	Use opion --help for help"
-	exit
+if [ ! -d $CONFIG_S ]; then
+	echo "Missing directory: $CONFIG_S\n    Use opion --help for help"; exit 1
 fi
 
-./bash.sh $CONFIG_D
-./terminator.sh $CONFIG_D
-./vim.sh $CONFIG_D
-./xorg.sh $CONFIG_D
+./bash.sh $CONFIG_S
+./terminator.sh $CONFIG_S
+./vim.sh $CONFIG_S
+./cppClass.sh $CONFIG_S
+#./xorg.sh $CONFIG_S

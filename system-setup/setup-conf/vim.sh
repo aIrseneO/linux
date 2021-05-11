@@ -1,29 +1,22 @@
 #! /bin/sh
 
-if [ "$#" -gt 1 ]; then
-	echo "Too many arguments.\n	Usage: vim.sh [dir]"
-	exit
-fi
+CONFIG_S=./conf.d
 
-if [ "$1" = "--help" ]; then
-	echo "Usage: vim.sh [dir]\n	--help  display this help and exit
-The default directory is [../conf.d/]"
-	exit
+if [ "$#" -gt 1 ] || [ "$1" = "--help" ]; then
+	echo "Usage: $0 [dir]\n --help  display this help and exit
+The default directory is [$CONFIG_S]"; exit 1
 fi
 
 if [ "$#" = 1 ]; then
-	CONFIG_D=$1
-else
-	CONFIG_D=../conf.d
+	CONFIG_S=$1
 fi
 
-if [ ! -d $CONFIG_D ]; then
-	echo "Missing directory: $CONFIG_D\n	Use opion --help for help"
-	exit
+if [ ! -d $CONFIG_S ]; then
+	echo "Missing directory: $CONFIG_S\n    Use opion --help for help"; exit 1
 fi
 
-if [ -f $CONFIG_D/vimrc ]; then
-	cp $CONFIG_D/vimrc ~/.vimrc
+if [ -f $CONFIG_S/vimrc ]; then
+	cp $CONFIG_S/vimrc ~/.vimrc
 else
-	echo "Missing file: $CONFIG_D/vimrc"
+	echo "Missing file: $CONFIG_S/vimrc"
 fi

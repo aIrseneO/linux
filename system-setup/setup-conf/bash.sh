@@ -1,41 +1,34 @@
 #! /bin/sh
 
-if [ "$#" -gt 1 ]; then
-	echo "Too many arguments.\n	Usage: bash.sh [dir]"
-	exit
-fi
+CONFIG_S=./conf.d
 
-if [ "$1" = "--help" ]; then
-	echo "Usage: bash.sh [dir]\n	--help  display this help and exit
-The default directory is [../conf.d/]"
-	exit
+if [ "$#" -gt 1 ] || [ "$1" = "--help" ]; then
+	echo "Usage: $0 [dir]\n	--help  display this help and exit
+The default directory is [$CONFIG_S]"; exit 1
 fi
 
 if [ "$#" = 1 ]; then
-	CONFIG_D=$1
-else
-	CONFIG_D=../conf.d
+	CONFIG_S=$1
 fi
 
-if [ ! -d $CONFIG_D ]; then
-	echo "Missing directory: $CONFIG_D\n	Use opion --help for help"
-	exit
+if [ ! -d $CONFIG_S ]; then
+	echo "Missing directory: $CONFIG_S\n	Use opion --help for help"; exit 1
 fi
 
-if [ -f $CONFIG_D/bashrc ]; then
-	cp $CONFIG_D/bashrc ~/.bashrc
+if [ -f $CONFIG_S/bashrc ]; then
+	cp $CONFIG_S/bashrc ~/.bashrc
 else
-	echo "Missing file: $CONFIG_D/bashrc"
+	echo "Missing file: $CONFIG_S/bashrc"
 fi
 
-if [ -f $CONFIG_D/bash_aliases ];then
-	cp $CONFIG_D/bash_aliases ~/.bash_aliases
+if [ -f $CONFIG_S/bash_aliases ];then
+	cp $CONFIG_S/bash_aliases ~/.bash_aliases
 else
-	echo "Missing file: $CONFIG_D/bash_aliases"
+	echo "Missing file: $CONFIG_S/bash_aliases"
 fi
 
-if [ -f $CONFIG_D/bash_fancy ];then
-	cp $CONFIG_D/bash_fancy ~/.bash_fancy
+if [ -f $CONFIG_S/bash_fancy ];then
+	cp $CONFIG_S/bash_fancy ~/.bash_fancy
 else
-	echo "Missing file: $CONFIG_D/bash_fancy"
+	echo "Missing file: $CONFIG_S/bash_fancy"
 fi
