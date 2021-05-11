@@ -98,10 +98,13 @@ It's the lower-level package utilities for debian based distributions. The stand
 ## top
   | Command | Output |
   |---------|--------|
+  | 1 | Display or hide cpu(s) information|
+  | 2 | Display or hide memory information|
   | t | Display or hide summary information (rows 2 and 3)|
   | m	| Display or hide memory information (rows 4 and 5)|
   | A	| Sort the process list by top resource consumers|
   | r	| Renice (change the priority of) a specific processes|
   | k	| Kill a specific process|
   | f	| Enter the top configuration screen|
-  | o	| Interactively select a new sort order in the process list|<br>
+  | o	| Interactively select a new sort order in the process list|
+  | man top | for more....<br>

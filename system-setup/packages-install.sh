@@ -24,3 +24,4 @@ sudo apt install clang -y
 sudo apt install qpdf -y
 sudo apt install pdfmod -y
 sudo apt install sysstat -y
+sudo apt install net-tools -y
