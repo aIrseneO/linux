@@ -19,4 +19,4 @@ fi
 if [ ! -d $CONFIG_D ]; then
 	mkdir ~/.cppClass
 fi
-cp -r $CONFIG_S/* $CONFIG_D
+cp -r $CONFIG_S/* $CONFIG_D/

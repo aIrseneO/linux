@@ -17,8 +17,10 @@ make_class_cpp() {
 }
 
 make_class_hpp() {
+	local ClassNameCap=$1
 	sed "s|Myclass|$1|g" $2 >> $1.hpp || \
 		echo "Missing skeleton Myclass.hpp"
+	sed -i "s|MYCLASS|${ClassNameCap^^}|g" $1.hpp
 }
 ############################################################
 if [ "$#" != 2 ]; then
