@@ -1,69 +1,123 @@
-#! /bin/sh
-sudo du --max-depth=1 -hx /
-help ulimit
-ps -elf
-nice
-renice
-nice -5 cat &
-ps -l
-sudo renice -3 -p [_305001_]
-#Allow user to use renice and others: /etc/security/limits.conf
-#renice using GUI: gnome-system-monitor
-ldd
-ldconfig uses /etc/ld.so.conf
-#change Soft limit: $renice  -S -n _424_
-ipcs
-ipcs -p
-ps aux | grep -e [_cpid_] -e [_lpid_]
-#list of signal: $kill  -l
-#to send interrupt to the process 352674: $kill -s SIGINT [352674]
-#or $kill -SIGINT [_352674_]
-#SIGTERM (15) is the default signal
-killall minishell; $pkill -u facko _352674_
+ls -lF /sys/class/net # Can examined Network devices
+# Package management
+## Shared object dependencies
+```
+man ldd; ldd <bin (e.g.: a.out)>; man ldconfig
+```
+
+```
 rpm -q bash; rpm -V bash
-/usr/lib/rpm/rpmrc
-man zypper #on Suse system
-zypper list-updates; zypper repos; zypper search <string>; zypper info <package>
+```
+> /usr/lib/rpm/rpmrc
+## Suse system
+```
+man zypper
+zypper list-updates; zypper repos
+zypper search <string>; zypper info <package>
 zypper search --provides <package>
-sudo zypper shell #to use zypper interactively and avoid 
-# re-reading all the databases for each command
-sudo zypper addrepo _URI_ _alias_
-sudo zypper removerepo _alias_
-sudo zypper clean [--all] # to clean up cache
-sudo apt-file update;sudo apt-cache search <package>; apt-cache show <package>
-apt-cache showpkg <package>; apt-cache depends <package>
-apt-file search <package>; apt-file list <package>; apt-file find <file path>
+```
+## Use zypper interactively and avoid re-reading all the databases for each cmd
+```
+sudo zypper shell
+```
+```
+sudo zypper addrepo <URI> <alias>
+sudo zypper removerepo <alias>
+```
+### to clean up cache
+```
+sudo zypper clean [--all] 
+```
+```
+sudo apt-file update; sudo apt-cache search <package>
+apt-cache show <package>; apt-cache showpkg <package>
+apt-cache depends <package>; apt-file search <package>
+apt-file list <package>; apt-file find <file path>
 sudo apt install [package]; sudo apt remove [package]; 
 sudo apt --purge remove; sudo apt upgrade
-sudo apt update; sudo apt dist-upgrade; #proper way to upgrade
-sudo apt autoremove; sudo apt clean #clean up
+```
+### proper way to upgrade
+```
+sudo apt update; sudo apt dist-upgrade
+```
+### clean up
+```
+sudo apt autoremove; sudo apt clean
+```
+# Monitoring
+> gnome-system-monitor
+```
+dmesg -w
+vmstat -a -S m 2 10
+top; htop; ntop; atop
+man sar
+man sadc
+sudo tail -f <Log file>
+```
+## Log files:
+> /var/log/boot.log
+> /var/log/messages
+> /var/log/syslog
+> /var/log/secure
+## Rotate log files
+```
+man logrotate
+```
+> /etc/logrotate.conf
 
-dmesg -w; sudo tail -f /var/log/messages ; sudo tail -f /var/log/syslog #kernel
-# related messages
-/var/log/boot.log # System boot messages 
-/var/log/messages; var/log/syslog # All important system messages
-/var/log/secure # Security-related messages
-logrotate; /etc/logrotate.conf
-ls -lF /proc/sys # tunable system parameters
-sudo sysctl kernel.threads-max=100000 # is equivalent to:
+## configure kernel parameters at runtime
+Configurable files are located at:
+> /proc/sys/...
+```
+sudo sysctl kernel.threads-max=100000
+```
+is equivalent to:
+```
 sudo bash -c 'echo 100000 > /proc/sys/kernel/threads-max'
-sysctl
-ls -lF /sys/class/net # Can examined Network devices
-sar  # Systems Activity Reporter
-sadc # System activity data collector, info in /var/log/sa
-#ksar to generate nice graphs of sar data
-vmstat -a 2 10000
+```
+## Stress the system to monitor variations:
+```
 man stess
-man stress-ng # simulate various high load conditions
-ps auxf; ps -elf; pa -eL; ps -C "bash"
-ps -o pid,uid,cpputime # format
+man stress-ng
+```
+# Process usage
+## Security configuration to limit users action on the system:
+> /etc/security/limits.conf
+## Nice and Renice:
+```
+nice -5 cat &
+sudo renice -3 --pid <pid>
+```
+## Inter-process communication:
+```
+ipcs -l --human [-p <pid>]
+```
+## Process limits:
+```
+prlimit [--pid <pid>]
+man setrlimit; man getrlimit; man ulimit
+```
+## Send a signal to process(es):
+```
+kill -l; kill -s INT <pid>
+killall -l; killall -i -s INT bash
+man killall5
+```
+## List processes:
+```
+ps -C "bash"
+ps -o pid,uid,cpputime
 pstree -aAp <pid>
-top; htop; ntop; atop # gnome-system-monitor or ksysguard
+
+ps -l; ps -lax
+ps auxf; ps -elf; pa -eL; 
+```
+```
 dd ; fg;
+
 cat /proc/meminfo
 cat /proc/sys/vm
-vmstat --help; vmstat 2 4; vmstat -a 2 4 ; vmstat -SM -a 2 4
-vmstat -d; vmstat -p /dev/<partition> 2 4
+
 man iotop; man iostat; iotop --help #be: best effort, #rt: real time
 ionice --help; man ionice
 man bonnie++; sudo bonnie++ -n 0 -u 0 -r 100 -f -b -d /mnt
@@ -103,6 +157,7 @@ sudo quotacheck -u [somefilesystem]
 sudo quotacheck -g [somefilesystem]
 sudo edquota -u -p [userproto] [username]
 df -hT
+sudo du --max-depth=1 -hx /
 du -ah <filename>
 man tune2fs
 sudo dumpe2fs /dev/sda1| less
