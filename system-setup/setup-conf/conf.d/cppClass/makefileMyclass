@@ -1,0 +1,26 @@
+NAME		= Myclass
+SRCS		= main$(NAME).cpp $(NAME).cpp
+OBJS		= $(subst .cpp,.o,$(SRCS))
+HEADERS		= $(NAME).hpp
+CC			= clang++
+CPPFLAGS	= -std=c++98 -Wall -Wextra -Werror
+
+all: $(NAME)
+
+$(NAME):	$(OBJS)
+			$(CC) $(CPPFLAGS) -o $@ $^
+
+%.o:		%.cpp $(HEADERS)
+			$(CC) $(CPPFLAGS) -c -o $@ $<
+
+clean:
+			rm -f $(OBJS)
+
+fclean:		clean
+			rm -f $(NAME)
+
+re:			fclean all
+
+f:			all clean
+
+.PHONY:		all clean fclean re f
