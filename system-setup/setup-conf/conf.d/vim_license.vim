@@ -12,12 +12,19 @@
 
 
 " MIT License
-let MIT = [
+let MIT1 = [
 \"/*",
 \"* Copyright (c) 2020 Arsene Temfack",
 \"*",
 \"* SPDX-License-Identifier: MIT",
 \"*/"
+\]
+let MIT2 = [
+\"#",
+\"# Copyright (c) 2020 Arsene Temfack",
+\"#",
+\"# SPDX-License-Identifier: MIT",
+\"#"
 \]
 
 
@@ -42,7 +49,8 @@ endfunction
 
 
 " Bind Licenses with shortcuts
-command! MIT call s:appendLicense(MIT)
+command! MIT1 call s:appendLicense(MIT1)
+command! MIT2 call s:appendLicense(MIT2)
 
 
 " Map a key to License
