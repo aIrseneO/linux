@@ -20,3 +20,10 @@ if [ -f $CONFIG_S/vimrc ]; then
 else
 	echo "Missing file: $CONFIG_S/vimrc"
 fi
+
+if [ -f $CONFIG_S/vim_license.vim ]; then
+	mkdir -p ~/.vim/plugin
+	cp $CONFIG_S/vim_license.vim  ~/.vim/plugin/
+else
+	echo "Missing file: $CONFIG_S/vim_license.vim"
+fi

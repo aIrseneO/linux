@@ -235,6 +235,7 @@ dd if=/dev/sda of=sdadisk.img; dd if=/dev/sda1 of=partition1.img
 dd if=/dev/cdrom of=tgsservice.iso bs=2048;
 dd if=ndata conv=swab count=1024 | uniq > ofile
 rsync --help; rsync [options] sourcefile destinationfile
+rsync --progress -avrxH  --delete sourcedir destdir
 ls | cpio --create -O /dev/st0
 cpio -i somefile -I /dev/st0; cpio -t -I /dev/st0
 man dump; man restore; sudo restore -rvf /tmp/boot_backup
@@ -321,4 +322,8 @@ ps axo command,pid,stat,priority|head; ps aux|head
 man at; at --help
 at 00:42 AM 4/20/2022 -f ./myScript.sh
 
+ma sort; man uniq; man paste; man join; man split
+sort -k 3 <filename>
+paste -d, <file1> <file2>
+join <file1> <file2>
 
