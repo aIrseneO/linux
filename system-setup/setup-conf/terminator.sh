@@ -1,5 +1,9 @@
 #! /bin/sh
 
+# Copyright (c) 2020 Arsene Temfack
+#
+# SPDX-License-Identifier: MIT
+
 CONFIG_S=./conf.d
 CONFIG_D=~/.config/terminator
 

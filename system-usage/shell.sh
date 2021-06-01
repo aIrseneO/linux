@@ -1,5 +1,9 @@
 #! /bin/bash
 
+# Copyright (c) 2020 Arsene Temfack
+#
+# SPDX-License-Identifier: MIT
+
 #NAME=firstname.lastname
 #FIRST=${NAME:0:3}
 #LAST=${NAME#*.}

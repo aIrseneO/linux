@@ -1,16 +1,8 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    sshinit.sh                                         :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: atemfack <marvin@42.fr>                    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/03/07 19:42:11 by atemfack          #+#    #+#              #
-#    Updated: 2020/03/07 22:45:11 by atemfack         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 #!/bin/bash
+
+# Copyright (c) 2020 Arsene Temfack
+#
+# SPDX-License-Identifier: MIT
 
 # Check if the user is the root of the system 
 if [[ $whoami -ne "root" ]]

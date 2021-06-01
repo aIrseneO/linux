@@ -1,3 +1,9 @@
+/*
+* Copyright (c) 2020 Arsene Temfack
+*
+* SPDX-License-Identifier: MIT
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -11,9 +17,9 @@
 //./wastemem 5000
 
 /*
-   Given a number a number of Megabytes X (argument passed to the program),
-   this program gradually allocotes up to X Megabytes and set them to zero.
-   Allocations are done in TIME secondes.
+*  Given a number a number of Megabytes X (argument passed to the program),
+*  this program gradually allocotes up to X Megabytes and set them to zero.
+*  Allocations are done in TIME secondes.
 */
 int main(int argc, char **argv) {
 	int		i, j;

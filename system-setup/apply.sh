@@ -10,6 +10,10 @@
 #	Source:
 #https://www.systutorials.com/how-to-make-grub2-boot-to-older-kernel-version-in-ubuntu-20-04/
 #
+#
+# How to sign a kernel module Ubuntu 18.04
+#https://superuser.com/questions/1438279/how-to-sign-a-kernel-module-ubuntu-18-04
+#
 #	To remove a kernel:
 #sudo apt remove linux-image-VERSION-generic linux-headers-VERSION-generic
 #_______________________________________________________________________________

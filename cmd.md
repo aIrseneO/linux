@@ -1,4 +1,7 @@
 ls -lF /sys/class/net # Can examined Network devices
+```
+$ sudo du --max-depth=1 -hx /
+```
 # Package management
 ## Shared object dependencies
 ```
@@ -90,11 +93,15 @@ sudo renice -3 --pid <pid>
 ```
 ## Inter-process communication:
 ```
-ipcs -l --human [-p <pid>]
+ipcs
+ipcs --help
 ```
 ## Process limits:
 ```
+ipcs -l --human [-p <pid>]
 prlimit [--pid <pid>]
+ulimit [-H/-S] -a
+ulimit [-H/-S] -n <value>
 man setrlimit; man getrlimit; man ulimit
 ```
 ## Send a signal to process(es):
@@ -102,17 +109,22 @@ man setrlimit; man getrlimit; man ulimit
 kill -l; kill -s INT <pid>
 killall -l; killall -i -s INT bash
 man killall5
+man 7 signal
+pkill --signal INT -u root bash
 ```
 ## List processes:
 ```
 ps -C "bash"
+pgrep -u root bash
+
 ps -o pid,uid,cpputime
 pstree -aAp <pid>
 
 ps -l; ps -lax
 ps auxf; ps -elf; pa -eL; 
 ```
-```
+
+
 dd ; fg;
 
 cat /proc/meminfo
@@ -157,7 +169,7 @@ sudo quotacheck -u [somefilesystem]
 sudo quotacheck -g [somefilesystem]
 sudo edquota -u -p [userproto] [username]
 df -hT
-sudo du --max-depth=1 -hx /
+
 du -ah <filename>
 man tune2fs
 sudo dumpe2fs /dev/sda1| less
