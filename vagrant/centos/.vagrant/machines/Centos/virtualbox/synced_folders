@@ -1,0 +1,1 @@
+{"virtualbox":{"/vagrant_data":{"guestpath":"/vagrant_data","hostpath":"/home/facko/unix/vagrant/centos/shared","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"/home/facko/unix/vagrant/centos","disabled":false,"__vagrantfile":true}}}

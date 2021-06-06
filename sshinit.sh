@@ -1,8 +1,10 @@
 #!/bin/bash
 
-# Copyright (c) 2020 Arsene Temfack
-#
-# SPDX-License-Identifier: MIT
+################################################################################
+##     Copyright (c) 2020 Arsene Temfack                                      ##
+##                                                                            ##
+##     SPDX-License-Identifier: MIT                                           ##
+################################################################################
 
 # Check if the user is the root of the system 
 if [[ $whoami -ne "root" ]]

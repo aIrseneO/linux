@@ -1,4 +1,11 @@
 #! /bin/sh
+
+################################################################################
+##     Copyright (c) 2020 Arsene Temfack                                      ##
+##                                                                            ##
+##     SPDX-License-Identifier: MIT                                           ##
+################################################################################
+
 ######################## Functions #########################
 make_mainfile() {
 	sed "s|Myclass|$1|g" $2 >> main$1.cpp || \
@@ -22,7 +29,7 @@ make_class_hpp() {
 		echo "Missing skeleton Myclass.hpp"
 	sed -i "s|MYCLASS|${ClassNameCap^^}|g" $1.hpp
 }
-############################################################
+######################## Main ##############################
 if [ "$#" != 2 ]; then
 	echo "Usage: $0 Skeletons_Directory ClassName"; exit 1
 fi
