@@ -339,3 +339,10 @@ sort -k 3 <filename>
 paste -d, <file1> <file2>
 join <file1> <file2>
 
+dd if=<file> of=/dev/stdout 2> /dev/null #Another way to cat a file
+lsblk -o +UUID; cat /etc/fstab #check UIID
+sudo chattr +a cmd.md
+for ((i=0; i<100;i++ )); do echo $i; done
+sudo mdadm --zero-superblock /dev/<sdaX> # RAID device removal
+sudo mdadm --detail /dev/mdX # RAID device removal
+sudo mdadm --stop /dev/mdX # RAID device removal
