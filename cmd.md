@@ -1,6 +1,7 @@
 ls -lF /sys/class/net # Can examined Network devices
 ```
 $ sudo du --max-depth=1 -hx /
+$ sudo systemctl mask tmp.mount
 ```
 # Package management
 ## Shared object dependencies
@@ -346,3 +347,10 @@ for ((i=0; i<100;i++ )); do echo $i; done
 sudo mdadm --zero-superblock /dev/<sdaX> # RAID device removal
 sudo mdadm --detail /dev/mdX # RAID device removal
 sudo mdadm --stop /dev/mdX # RAID device removal
+sudo dd bs=4M if=~/images/CentOS-7.iso of=/dev/sdc status=progress oflag=sync
+
+man capabilities; man getcap; man setcap
+sudo find / -maxdepth 4 -size +200M -fstype ext4 -type f -exec du -sh {} +
+
+man -k degrag
+sudo losetup --find --show /dev/loop0
