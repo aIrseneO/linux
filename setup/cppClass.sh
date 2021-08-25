@@ -6,10 +6,11 @@
 ##     SPDX-License-Identifier: MIT                                           ##
 ################################################################################
 
-CONFIG_S=./conf.d
+CONFIG_S=$(pwd)/conf.d/cppClass
+CONFIG_D=~/.cppClass
 
 if [ "$#" -gt 1 ] || [ "$1" = "--help" ]; then
-	echo "Usage: $0 [dir]\n --help  display this help and exit
+	echo "Usage: $0 [dir]\n	--help  display this help and exit
 The default directory is [$CONFIG_S]"; exit 1
 fi
 
@@ -18,11 +19,10 @@ if [ "$#" = 1 ]; then
 fi
 
 if [ ! -d $CONFIG_S ]; then
-	echo "Missing directory: $CONFIG_S\n    Use opion --help for help"; exit 1
+	echo "Missing directory: $CONFIG_S\n	Use opion --help for help"; exit 1
 fi
 
-./bash.sh $CONFIG_S
-./terminator.sh $CONFIG_S
-./vim.sh $CONFIG_S
-./cppClass.sh $CONFIG_S
-#./xorg.sh $CONFIG_S
+if [ ! -d $CONFIG_D ]; then
+	mkdir ~/.cppClass
+fi
+cp -r $CONFIG_S/* $CONFIG_D/
