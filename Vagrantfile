@@ -13,27 +13,39 @@ Vagrant.configure("2") do |config|
   # Every Vagrant development environment requires a box. They can be search at
   # https://vagrantcloud.com/search.
 
+  ID = "167VLWLWevJ6xtKaxrDWaVrIwQi-B0wlh"
+  Wkdir = "/home/vagrant/LearningResources.tar.gzip"
+
+  # Commun
+  config.vm.synced_folder "./setup", "/vagrant", :mount_options => ["ro"]
+  config.vm.boot_timeout = 500
+  
+  config.vm.provider "virtualbox" do |vb|
+      vb.gui = false
+      vb.cpus = "1"
+      vb.memory = "1024"
+  end
+
+  config.vm.provision "shell", path: "googleDownload.sh", args: "#{ID} #{Wkdir}"
+  config.vm.provision "shell", path: "vagrant-provision.sh"
+  config.vm.provision "shell", inline: <<-SHELL
+    tar -xvf #{Wkdir}
+  SHELL
+
   # Ubuntu Virtual Machine
   config.vm.define "Ubuntu-vm" do |vm1|
     vm1.vm.hostname = "ubuntu"
     vm1.vm.box = "bento/ubuntu-18.04"
     vm1.vm.network "private_network", ip: "192.168.42.10"
-    vm1.vm.synced_folder "./setup", "/vagrant", :mount_options => ["ro"]
-	vm1.vm.boot_timeout = 500
-
+    
     vm1.vm.provider "virtualbox" do |vb|
       vb.name = "Ubuntu"
-      vb.gui = false
-      vb.cpus = "1"
-      vb.memory = "1024"
     end
 
     vm1.vm.provision "shell", inline: <<-SHELL
       apt-get update -y
       apt-get install -y man man-db git
     SHELL
-
-    vm1.vm.provision "shell", path: "vagrant-provision.sh"
   end
 
   # CentOS Virtual Machine
@@ -41,22 +53,15 @@ Vagrant.configure("2") do |config|
     vm2.vm.hostname = "centos"
     vm2.vm.box = "bento/centos-7.2"
     vm2.vm.network "private_network", ip: "192.168.42.11"
-    vm2.vm.synced_folder "./setup", "/vagrant", :mount_options => ["ro"]
-	vm2.vm.boot_timeout = 500
 
     vm2.vm.provider "virtualbox" do |vb|
       vb.name = "CentOS"
-      vb.gui = false
-      vb.cpus = "1"
-      vb.memory = "1024"
     end
 
     vm2.vm.provision "shell", inline: <<-SHELL
       yum update -y
-	  yum install -y man man-pages man-db git bind-utils vim
+      yum install -y man man-pages man-db git bind-utils vim
     SHELL
-
-    vm2.vm.provision "shell", path: "vagrant-provision.sh"
   end
 
   # OpenSuse Virtual Machine
@@ -64,22 +69,15 @@ Vagrant.configure("2") do |config|
     vm3.vm.hostname = "opensuse"
     vm3.vm.box = "bento/opensuse-leap-15.1"
     vm3.vm.network "private_network", ip: "192.168.42.12"
-    vm3.vm.synced_folder "./setup", "/vagrant", :mount_options => ["ro"]
-	vm3.vm.boot_timeout = 500
 
     vm3.vm.provider "virtualbox" do |vb|
       vb.name = "OpenSuse"
-      vb.gui = false
-      vb.cpus = "1"
-      vb.memory = "1024"
     end
 
     vm3.vm.provision "shell", inline: <<-SHELL
       zypper update -y
       zypper install -y man man-pages man-db git      
     SHELL
-
-    vm3.vm.provision "shell", path: "vagrant-provision.sh"
   end
 
   # Fedora Virtual Machine
@@ -87,22 +85,15 @@ Vagrant.configure("2") do |config|
     vm4.vm.hostname = "fedora"
 	vm4.vm.box = "bento/fedora-31"
     vm4.vm.network "private_network", ip: "192.168.42.13"
-    vm4.vm.synced_folder "./setup", "/vagrant", :mount_options => ["ro"]
-	vm4.vm.boot_timeout = 500
 
     vm4.vm.provider "virtualbox" do |vb|
       vb.name = "Fedora"
-      vb.gui = false
-      vb.cpus = "1"
-      vb.memory = "1024"
     end
 
     vm4.vm.provision "shell", inline: <<-SHELL
       dnf update -y
       dnf install -y man man-pages man-db git
     SHELL
-
-    vm4.vm.provision "shell", path: "vagrant-provision.sh"
   end
 end
     # Others conf
