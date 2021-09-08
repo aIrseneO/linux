@@ -13,7 +13,7 @@ Vagrant.configure("2") do |config|
   # Every Vagrant development environment requires a box. They can be search at
   # https://vagrantcloud.com/search.
 
-  ID = "167VLWLWevJ6xtKaxrDWaVrIwQi-B0wlh"
+  ID = "__ID__"
   Wkdir = "/home/vagrant/LearningResources.tar.gzip"
 
   # Commun
@@ -36,7 +36,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "Ubuntu-vm" do |vm1|
     vm1.vm.hostname = "ubuntu"
     vm1.vm.box = "bento/ubuntu-18.04"
-    vm1.vm.network "private_network", ip: "192.168.42.10"
+    vm1.vm.network "private_network", ip: "192.168.40.10"
     
     vm1.vm.provider "virtualbox" do |vb|
       vb.name = "Ubuntu"
@@ -52,7 +52,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "Centos-vm" do |vm2|
     vm2.vm.hostname = "centos"
     vm2.vm.box = "bento/centos-7.2"
-    vm2.vm.network "private_network", ip: "192.168.42.11"
+    vm2.vm.network "private_network", ip: "192.168.41.11"
 
     vm2.vm.provider "virtualbox" do |vb|
       vb.name = "CentOS"
@@ -76,7 +76,7 @@ Vagrant.configure("2") do |config|
 
     vm3.vm.provision "shell", inline: <<-SHELL
       zypper update -y
-      zypper install -y man man-pages man-db git      
+      zypper install -y man man-pages vim git
     SHELL
   end
 
@@ -84,7 +84,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "Fedora-vm" do |vm4|
     vm4.vm.hostname = "fedora"
 	vm4.vm.box = "bento/fedora-31"
-    vm4.vm.network "private_network", ip: "192.168.42.13"
+    vm4.vm.network "private_network", ip: "192.168.43.13"
 
     vm4.vm.provider "virtualbox" do |vb|
       vb.name = "Fedora"
