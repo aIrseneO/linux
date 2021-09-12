@@ -52,7 +52,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "Centos-vm" do |vm2|
     vm2.vm.hostname = "centos"
     vm2.vm.box = "bento/centos-7.2"
-    vm2.vm.network "private_network", ip: "192.168.41.11"
+    vm2.vm.network "private_network", ip: "192.168.40.11"
 
     vm2.vm.provider "virtualbox" do |vb|
       vb.name = "CentOS"
