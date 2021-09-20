@@ -38,7 +38,7 @@
 #
 # Usual installations
 #systemctl enable bluetooth
-#! /bin/sh
+#! /bin/bash
 #apt update
 #apt install terminator -y
 #apt install vim -y

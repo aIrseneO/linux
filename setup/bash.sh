@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /bin/bash
 
 ################################################################################
 ##     Copyright (c) 2020 Arsene Temfack                                      ##
@@ -7,34 +7,36 @@
 ################################################################################
 
 CONFIG_S=$(pwd)/conf.d
+CONFIG_D=$HOME
 
-if [ "$#" -gt 1 ] || [ "$1" = "--help" ]; then
-	echo "Usage: $0 [dir]\n	--help  display this help and exit
-The default directory is [$CONFIG_S]"; exit 1
+MSG="Setup Bash personalized configuration files:\n
+\t$CONFIG_D/.bashrc\n
+\t$CONFIG_D/.bash_fancy\n
+\t$CONFIG_D/.bash_aliases\n
+Copied from $CONFIG_S\n\n
+\tUsage: $0 [ --help | -h | help ]\n"
+
+if [[ "$#" = "1" ]] &&
+		[[ "$1" = "--help" || "$1" = "-h" || "$1" = "help" ]]; then
+	echo -e $MSG; exit 0
 fi
 
-if [ "$#" = 1 ]; then
-	CONFIG_S=$1
+if [[ "$#" != "0" ]]; then
+	echo -e $MSG; exit 1
 fi
+
 
 if [ ! -d $CONFIG_S ]; then
 	echo "Missing directory: $CONFIG_S\n	Use opion --help for help"; exit 1
 fi
 
-if [ -f $CONFIG_S/bashrc ]; then
-	cp $CONFIG_S/bashrc ~/.bashrc
-else
-	echo "Missing file: $CONFIG_S/bashrc"
+if [[ ! -f $CONFIG_S/bashrc || ! -f $CONFIG_S/bash_aliases ||
+		! -f $CONFIG_S/bash_fancy ]]; then
+	echo "Missing configuration file(s)."; exit 1
 fi
 
-if [ -f $CONFIG_S/bash_aliases ];then
-	cp $CONFIG_S/bash_aliases ~/.bash_aliases
-else
-	echo "Missing file: $CONFIG_S/bash_aliases"
-fi
+cp $CONFIG_S/bashrc $CONFIG_D/.bashrc
+cp $CONFIG_S/bash_aliases $CONFIG_D/.bash_aliases
+cp $CONFIG_S/bash_fancy $CONFIG_D/.bash_fancy
 
-if [ -f $CONFIG_S/bash_fancy ];then
-	cp $CONFIG_S/bash_fancy ~/.bash_fancy
-else
-	echo "Missing file: $CONFIG_S/bash_fancy"
-fi
+echo $0 Done!; exit $?

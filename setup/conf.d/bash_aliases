@@ -1,15 +1,14 @@
+# Some env variables
+#export MAIL42=marvin@42.fr
+#export USER42=atemfack
+export g="git clone https://github.com/airseneo" # USE: _> $g/cub3d.git
+
 # Aliases
 alias open='xdg-open'
 alias clr='clear'
 alias gw='gcc -Wall -Wextra -Werror'
 alias gwf='gcc -Wall -Wextra -Werror -g -fsanitize=address'
-alias norme='~/.norminette/norminette.rb'
-alias norminette='~/.norminette/norminette.rb'
+#alias norme='~/.norminette/norminette.rb'
+#alias norminette='~/.norminette/norminette.rb'
 alias c='xclip'
 alias v='xclip -o'
-alias makeclass='sh ~/.cppClass/class.sh ~/.cppClass'
-
-# Some env variables
-export MAIL42=marvin@42.fr
-export USER42=atemfack
-export g="git clone https://github.com/airseneo" # USE: _> $g/cub3d.git

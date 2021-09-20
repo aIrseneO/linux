@@ -18,7 +18,7 @@ Vagrant.configure("2") do |config|
 
   # Commun
   config.vm.synced_folder "./setup", "/vagrant", :mount_options => ["ro"]
-  config.vm.boot_timeout = 500
+  config.vm.boot_timeout = 5000
   
   config.vm.provider "virtualbox" do |vb|
       vb.gui = false
@@ -37,6 +37,7 @@ Vagrant.configure("2") do |config|
     vm1.vm.hostname = "ubuntu"
     vm1.vm.box = "bento/ubuntu-18.04"
     vm1.vm.network "private_network", ip: "192.168.40.10"
+	vm1.vm.network "forwarded_port", guest: 80, host: 8080
     
     vm1.vm.provider "virtualbox" do |vb|
       vb.name = "Ubuntu"
@@ -68,7 +69,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "Opensuse-vm" do |vm3|
     vm3.vm.hostname = "opensuse"
     vm3.vm.box = "bento/opensuse-leap-15.1"
-    vm3.vm.network "private_network", ip: "192.168.42.12"
+    vm3.vm.network "private_network", ip: "192.168.40.12"
 
     vm3.vm.provider "virtualbox" do |vb|
       vb.name = "OpenSuse"
@@ -84,7 +85,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "Fedora-vm" do |vm4|
     vm4.vm.hostname = "fedora"
 	vm4.vm.box = "bento/fedora-31"
-    vm4.vm.network "private_network", ip: "192.168.43.13"
+    vm4.vm.network "private_network", ip: "192.168.40.13"
 
     vm4.vm.provider "virtualbox" do |vb|
       vb.name = "Fedora"
@@ -102,3 +103,6 @@ end
   	# vmX.vm.provision "shell", run: "always", inline: <<-SHELL
   	  # echo "Welome !"
     # SHELL
+
+# Clean Up virtualbox links `vbonxnetX` afterward
+#vboxmanage hostonlyif remove vboxnetX
