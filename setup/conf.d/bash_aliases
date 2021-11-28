@@ -12,3 +12,9 @@ alias gwf='gcc -Wall -Wextra -Werror -g -fsanitize=address'
 #alias norminette='~/.norminette/norminette.rb'
 alias c='xclip'
 alias v='xclip -o'
+
+DISTRO_PKG_MANAGEMENT_SYST=apt-cache
+alias search='betterSearch'
+betterSearch() {
+	$DISTRO_PKG_MANAGEMENT_SYST search $1 | grep "^$1"
+}
