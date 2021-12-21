@@ -1,2 +1,0 @@
-# Linux
-All about Linux
