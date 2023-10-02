@@ -1,8 +1,9 @@
 # Some env variables
 #export MAIL42=marvin@42.fr
 #export USER42=atemfack
-export gai="git clone https://github.com/airseneo" # USE: _> $g/cub3d.git
-export gio="git clone https://github.com/iodevopens" # USE: _> $g/<repo name>
+export gai="git clone https://github.com/airseneo" # USE: _> $gai/cub3d.git
+export gio="git clone https://github.com/iodevopens" # USE: _> $gio/<repo name>
+export gio="git clone https://github.com/IODevPOC" # USE: _> $gpoc/<repo name>
 
 # Aliases
 alias open='xdg-open'
