@@ -4,7 +4,7 @@
 export gai="git clone https://github.com/airseneo" # USE: _> $gai/cub3d.git
 export gio="git clone https://github.com/iodevopens" # USE: _> $gio/<repo name>
 export gio="git clone https://github.com/IODevPOC" # USE: _> $gpoc/<repo name>
-export gio="git clone https://github.com/IOOpSec" # USE: _> $gop/<repo name>
+export gop="git clone https://github.com/IOOpSec" # USE: _> $gop/<repo name>
 
 
 # Aliases
