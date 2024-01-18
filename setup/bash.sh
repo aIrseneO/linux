@@ -15,7 +15,7 @@ MSG="Setup Bash personalized configuration files:\n
  Copied from \`$CONFIG_S\`\n\n
 \tUsage: $0 [ --help | -h | help ]\n\n
 \n
-Note: This scropt will overwrite existing config files."
+Note: This script will overwrite existing config files."
 
 if [[ "$#" = "1" ]] &&
 		[[ "$1" = "--help" || "$1" = "-h" || "$1" = "help" ]]; then
@@ -30,7 +30,7 @@ if [ ! -d $CONFIG_S ]; then
 	echo "Missing directory: $CONFIG_S\n	Use opion --help for help"; exit 1
 fi
 
-if [[ ! -f $CONFIG_S/bash_aliases || ! -f $CONFIG_S/bash_fancy ]]; then
+if [[ ! -f $CONFIG_S/bash_aliases || ! -f $CONFIG_S/bash_fancy || ! -f $CONFIG_S/git-prompt ]]; then
 	echo "Missing configuration file(s)."; exit 1
 fi
 
@@ -60,5 +60,7 @@ fi
 
 cp $CONFIG_S/bash_aliases $CONFIG_D/.bash_aliases
 cp $CONFIG_S/bash_fancy $CONFIG_D/.bash_fancy
+cp $CONFIG_S/git-prompt $CONFIG_D/.git-prompt
+
 
 echo $0 Done!; exit $?
