@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reorganized Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+        }
+        .item {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 200px;
+        }
+        .item h2 {
+            text-align: center;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+        }
+        .sub-item {
+            margin: 10px 0;
+        }
+        .sub-item h3 {
+            margin: 5px 0;
+        }
+        .sub-item ul {
+            list-style-type: disc;
+            margin: 0;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="data-container"></div>
+
+    <script>
+        const data = [
+            {"a": "car", "b": "bag", "c": "mango"},
+            {"a": "car", "b": "bag", "c": "apple"},
+            {"a": "car", "b": "bottle", "c": "water"},
+			{"a": "car", "b": "bottle", "c": "oil"},
+            {"a": "plane", "b": "people", "c": "bob"},
+            {"a": "plane", "b": "people", "c": "mike"},
+            {"a": "plane", "b": "people", "c": "sam"}
+        ];
+
+        function reorganizeData(data) {
+            const result = {};
+            data.forEach(item => {
+                const { a, b, c } = item;
+                if (!result[a]) {
+                    result[a] = {};
+                }
+                if (!result[a][b]) {
+                    result[a][b] = [];
+                }
+                result[a][b].push(c);
+            });
+            for (let key in result) {
+                for (let subKey in result[key]) {
+                    if (result[key][subKey].length === 1) {
+                        result[key][subKey] = result[key][subKey][0];
+                    }
+                }
+            }
+            return result;
+        }
+
+        function generateHTML(data) {
+            const container = document.getElementById('data-container');
+            for (const key in data) {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'item';
+                const title = document.createElement('h2');
+                title.textContent = key;
+                itemDiv.appendChild(title);
+
+                for (const subKey in data[key]) {
+                    const subItemDiv = document.createElement('div');
+                    subItemDiv.className = 'sub-item';
+                    const subTitle = document.createElement('h3');
+                    subTitle.textContent = subKey;
+                    subItemDiv.appendChild(subTitle);
+
+                    const subContent = data[key][subKey];
+                    if (Array.isArray(subContent)) {
+                        const list = document.createElement('ul');
+                        subContent.forEach(value => {
+                            const listItem = document.createElement('li');
+                            listItem.textContent = value;
+                            list.appendChild(listItem);
+                        });
+                        subItemDiv.appendChild(list);
+                    } else {
+                        const text = document.createElement('p');
+                        text.textContent = subContent;
+                        subItemDiv.appendChild(text);
+                    }
+
+                    itemDiv.appendChild(subItemDiv);
+                }
+
+                container.appendChild(itemDiv);
+            }
+        }
+
+        const reorganizedData = reorganizeData(data);
+        console.log(reorganizedData);
+        generateHTML(reorganizedData);
+    </script>
+</body>
+</html>
